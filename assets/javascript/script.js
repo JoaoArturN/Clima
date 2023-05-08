@@ -38,7 +38,7 @@ document.querySelector('.search img').addEventListener('click' ,  () =>{
 clima('Rio de Janeiro');
 
 function clima(busca){
-    fetch('http://api.weatherapi.com/v1/current.json?key=b66f434e80904fd2adb233856230605&q=' + busca)
+    fetch('https://api.weatherapi.com/v1/current.json?key=b66f434e80904fd2adb233856230605&q=' + busca)
     .then(response => response.json())
     .then(data => exibir(data))
     .catch(error => console.log(error))
@@ -68,7 +68,7 @@ async function exibir(data){
         document.querySelector('.city').innerHTML =  data.location.name;
         document.querySelector('.state').innerHTML = 'Estado: ' + data.location.region;
         document.querySelector('.temp').innerHTML =  data.current.temp_c + '°C';
-        document.querySelector('.temp-status img').src =  data.current.condition.icon;
+        document.querySelector('.temp-status img').src =  'https:'+ data.current.condition.icon;
         document.querySelector('.wind').innerHTML =  data.current.wind_kph + ' km/h';
         document.querySelector('.more-info-weather').innerHTML = 'Sensação: ' + data.current.feelslike_c + ' ° <br>' + 'Umidade: ' + data.current.humidity;
         document.querySelector('.info-geo').innerHTML = 'Latitude: ' + data.location.lat + ' Longitude: ' + data.location.lon + '<br> Região: ' + data.location.tz_id
